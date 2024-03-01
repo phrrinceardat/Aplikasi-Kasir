@@ -37,4 +37,13 @@ class Mkategori extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+    
+    public function cekRelasi($idkategori)
+    {
+        $builder = $this->db->table('tbl_produk');
+        $builder->where('id_kategori', $idkategori);
+        $count = $builder->countAllResults();
+        return ($count > 0);
+    }
+    
 }

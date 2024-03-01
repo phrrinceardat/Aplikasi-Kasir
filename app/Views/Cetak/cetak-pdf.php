@@ -32,6 +32,8 @@
             <tr>
                 <th>No</th>
                 <th>Nama Produk</th>
+                <th>Harga Jual</th>
+                <th>Harga Beli</th>
                 <th>Stok</th>
             </tr>
         </thead>
@@ -41,6 +43,8 @@
                 <tr>
                     <td><?= $no++; ?></td>
                     <td><?= $baris['nama_produk']; ?></td>
+                    <td><?= $baris['harga_jual']; ?></td>
+                    <td><?= $baris['harga_beli']; ?></td>
                     <td><?= $baris['stok']; ?></td>
                     <!-- <div class="page-break"></div> -->
                 </tr>

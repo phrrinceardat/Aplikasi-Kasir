@@ -10,6 +10,21 @@
             <div class="alert alert-success" role="alert">
                 <?= session()->getFlashdata('tambah1'); ?>
             <?php endif; ?>
+            <!-- end notifikasi -->
+
+            <!-- notifikasi edit -->
+            <?php if (session()->getFlashdata('edit1')) : ?>
+                <div class="alert alert-success" role="alert">
+                    <?= session()->getFlashdata('edit1'); ?>
+                <?php endif; ?>
+                <!-- end notifikasi -->
+
+                <!-- notifikasi hapus -->
+                <?php if (session()->getFlashdata('hapus1')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('hapus1'); ?>
+                    <?php endif; ?>
+                    <!-- end notifikasi -->
             <table id="myTable">
                 <p><a href="<?= site_url('tambah-satuan'); ?>" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-circle-fill"></i> Tambah</a></p>
@@ -33,8 +48,10 @@
                                 <td><?= $baris['nama_satuan']; ?></td>
                                 <td>
 
-                                    <a href="<?= site_url('/edit-satuan/' . $baris['id_satuan']); ?>"><i class="bi bi-pencil-square"></i></a>
-                                    <a href="<?= site_url('/hapus-satuan/' . $baris['id_satuan']); ?>"><i class="bi bi-trash"></i></a>
+                                <a href="<?= site_url('/edit-satuan/' . $baris['id_satuan']); ?>" class="btn btn-warning"><i class="fas fa-pen"></i></a>
+                                        <form action="<?= site_url('/hapus-satuan/' . $baris['id_satuan']); ?>" method="post" class="d-inline-block">
+                                            <?= csrf_field() ?>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" id="hapusKategori" data-id="<?= $baris['id_satuan']; ?>"><i class="far fa-trash-alt"></i></button>
 
                             <?php
 

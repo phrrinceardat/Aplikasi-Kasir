@@ -7,10 +7,10 @@
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-0">From Edit Pengguna</h6>
-                            <form action="<?=site_url('perbarui-pengguna/'). $detailUser[0]['id_user'];?>" method="POST">
+                            <form action="<?=site_url('perbarui-pengguna/'). $detailUser[0]['username'];?>" method="POST">
                                 <div class="col-12">
                                     <label for="inputName" class="form-label">Username</label>
-                                    <input type="hidden" class="form-control" id="InputId" name="id_user">
+                                    <input type="hidden" class="form-control" id="InputUsn" name="username">
                                     <input type="text" class="form-control" id="inputUsn" name="username" value="<?= $detailUser[0]['username']; ?>">
                                 </div>
                                 <div class="col-12">

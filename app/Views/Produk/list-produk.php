@@ -48,8 +48,10 @@
                             <td><?= $baris['stok']; ?></td>
                             <td>
 
-                                <a href="<?= site_url('/edit-produk/' . $baris['id_produk']); ?>"><i class="bi bi-pencil-square"></i></a>
-                                <a href="<?= site_url('/hapus-produk/' . $baris['id_produk']); ?>"><i class="bi bi-trash"></i></a>
+                            <a href="<?= site_url('/edit-produk/' . $baris['id_produk']); ?>" class="btn btn-warning"><i class="fas fa-pen"></i></a>
+                                        <form action="<?= site_url('/hapus-produk/' . $baris['id_produk']); ?>" method="post" class="d-inline-block">
+                                            <?= csrf_field() ?>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" id="hapusKategori" data-id="<?= $baris['id_produk']; ?>"><i class="far fa-trash-alt"></i></button>
 
                             <?php
                         endforeach;

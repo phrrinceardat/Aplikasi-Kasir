@@ -10,8 +10,10 @@ class Kasir extends BaseController
     public function kasir()
     {
         $data = [
-            'akses' => session()->get('level')
+            'akses' => session()->get('level'),
+            'total_stok' => $this->produk->getJumlahStok(),
+            'stok'  => $this->produk->getJumlahStokKosong(),
         ];
-        return view('Kasir/dashboard-kasir', $data); 
+        return view('Kasir/halaman-kasir', $data); 
     }
 }

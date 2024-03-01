@@ -10,6 +10,7 @@ class Pengguna extends BaseController
     public function pengguna()
     {
         $data = [
+            'chartData' => $this->detail->getMonthlyIncome(),
             'akses' => session()->get('level'),
             'listPengguna' => $this->pengguna->findAll()
         ];
@@ -19,6 +20,7 @@ class Pengguna extends BaseController
     public function tambahPengguna()
     {
         $data = [
+            'chartData' => $this->detail->getMonthlyIncome(),
             'akses' => session()->get('level'),
         ];
         return view('Pengguna/tambah-pengguna', $data);
@@ -72,6 +74,8 @@ class Pengguna extends BaseController
         ];
 
         $data = [
+            'chartData' => $this->detail->getMonthlyIncome(),
+            'akses' => session()->get('level'),
             'detailUser' => $this->pengguna->where($syarat)->findAll()
         ];
         return view('Pengguna/edit-pengguna', $data);
@@ -81,6 +85,7 @@ class Pengguna extends BaseController
     {
 
         $data = [
+            'chartData' => $this->detail->getMonthlyIncome(),
             'akses' => session()->get('level'),
             'username' => $this->request->getVar('username'),
             'nama_user' => $this->request->getVar('nama_user'),

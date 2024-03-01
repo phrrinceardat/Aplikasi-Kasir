@@ -10,6 +10,7 @@ class KategoriProduk extends BaseController
     public function kategori()
     {
         $data = [ 
+            'chartData' => $this->detail->getMonthlyIncome(),
             'akses' => session()->get('level'),
         'listKategori' => $this->kategori_produk->findAll()
         ];
@@ -19,6 +20,7 @@ class KategoriProduk extends BaseController
     public function tambahKategori()
     {
         $data =[
+            'chartData' => $this->detail->getMonthlyIncome(),
             'akses' => session()->get('level'),
         ];
         return view('Kategori/tambah-kategori', $data);
@@ -64,6 +66,7 @@ class KategoriProduk extends BaseController
         ];
 
         $data = [
+            'chartData' => $this->detail->getMonthlyIncome(),
             'akses' => session()->get('level'),
             'detailKategori' => $this->kategori_produk->where($syarat)->findAll(),
         ];
@@ -117,5 +120,12 @@ class KategoriProduk extends BaseController
         session()->setFlashdata('tambah1', 'Data berhasil dihapus');
         return redirect()->to('/kategori-produk');
         }
+
+        public function cekRelasii($idkategori)
+    {
+        $relasi = $this->kategori_produk->cekRelasi($idkategori);
+
+        return $this->response->setJSON(['has_relasi' => $relasi]);
+    }
 
 }

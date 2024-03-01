@@ -54,6 +54,14 @@ class Mproduk extends Model
         $builder->orderBy('stok', 'asc');
         return $builder->get()->getResultArray();
     }
-    
 
+    public function getJumlahStok()
+    {
+        return $this->select('SUM(stok) AS total_stok')->get()->getRow()->total_stok;
+    }
+
+    public function getJumlahStokKosong()
+    {
+        return $this->where('stok', 0)->countAllResults();
+    }
 }

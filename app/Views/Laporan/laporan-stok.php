@@ -20,6 +20,8 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Produk</th>
+                        <th>Harga Beli</th>
+                        <th>Harga Jual</th>
                         <th>Stok</th>
                     </tr>
                 </thead>
@@ -34,6 +36,8 @@
                         <tr>
                             <th scope="row"><?= $no; ?></th>
                             <td><?= $baris['nama_produk']; ?></td>
+                            <td><?= $baris['harga_jual']; ?></td>
+                            <td><?= $baris['harga_beli']; ?></td>
                             <td><?= $baris['stok']; ?>
 
 

@@ -11,6 +11,7 @@ class SatuanProduk extends BaseController
     {
         
         $data = [
+            'chartData' => $this->detail->getMonthlyIncome(),
             'akses' => session()->get('level'),
             'listSatuan' => $this->satuan_produk->findAll(),
             
@@ -21,7 +22,7 @@ class SatuanProduk extends BaseController
     public function tambahSatuan()
     {
         $data = [
-
+            'chartData' => $this->detail->getMonthlyIncome(),
             'akses' => session()->get('level'),
         ];
         return view('satuan/tambah-satuan', $data);
@@ -66,6 +67,7 @@ class SatuanProduk extends BaseController
         ];
 
         $data = [
+            'chartData' => $this->detail->getMonthlyIncome(),
             'akses' => session()->get('level'),
             'detailSatuan' => $this->satuan_produk->where($syarat)->findAll(),
         ];
@@ -121,5 +123,7 @@ class SatuanProduk extends BaseController
         session()->setFlashdata('tambah1', 'Data berhasil dihapus');
         return redirect()->to('/satuan-produk');
         }
+
+        
     
 }

@@ -37,4 +37,13 @@ class Msatuan extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function cekRelasi($idsatuan)
+    {
+        $builder = $this->db->table('tbl_produk');
+        $builder->where('id_satuan', $idsatuan);
+        $count = $builder->countAllResults();
+        return ($count > 0);
+    }
+    
 }
